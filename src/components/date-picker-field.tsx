@@ -18,6 +18,9 @@ interface DatePickerFieldProps {
     field: Field;
 }
 
+const TODAY = new Date();
+const NEXT_YEAR = new Date(new Date().setFullYear(TODAY.getFullYear() + 1));
+
 export const DatePickerField = ({ label, placeholder, field }: DatePickerFieldProps) => {
     return (
         <FormItem className="flex flex-col">
@@ -42,7 +45,7 @@ export const DatePickerField = ({ label, placeholder, field }: DatePickerFieldPr
                         mode="single"
                         selected={field.value}
                         onSelect={field.onChange}
-                        disabled={(date) => date < new Date()}
+                        disabled={(date) => date < TODAY || date > NEXT_YEAR}
                         initialFocus
                     />
                 </PopoverContent>
