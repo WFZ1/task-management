@@ -8,7 +8,7 @@ export interface Task {
     priority: string;
 }
 
-export interface Options {
+export interface Option {
     label: string;
     value: string;
     icon?: ComponentType<{ className?: string }>;

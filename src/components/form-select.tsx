@@ -1,5 +1,6 @@
 import { FormControl, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Option } from '@/types';
 
 interface Field {
     value: string;
@@ -10,9 +11,10 @@ interface FormSelectProps {
     label: string;
     placeholder: string;
     field: Field;
+    options: Option[];
 }
 
-export const FormSelect = ({ label, placeholder, field }: FormSelectProps) => {
+export const FormSelect = ({ label, placeholder, field, options }: FormSelectProps) => {
     return (
         <FormItem>
             <FormLabel>{label}</FormLabel>
@@ -23,10 +25,11 @@ export const FormSelect = ({ label, placeholder, field }: FormSelectProps) => {
                     </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                    <SelectItem value="critical">Critical</SelectItem>
-                    <SelectItem value="High">High</SelectItem>
-                    <SelectItem value="medium">Medium</SelectItem>
-                    <SelectItem value="low">Low</SelectItem>
+                    {options.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                            {option.label}
+                        </SelectItem>
+                    ))}
                 </SelectContent>
             </Select>
             <FormMessage />

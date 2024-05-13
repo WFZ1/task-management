@@ -7,12 +7,12 @@ import { Button } from '@/components/ui/button';
 import { Command, CommandGroup, CommandItem, CommandList, CommandSeparator } from '@/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Separator } from '@/components/ui/separator';
-import { Options } from '../types';
+import { Option } from '@/types';
 
 interface DataTableFacetedFilterProps<TData, TValue> {
     column?: Column<TData, TValue>;
     title?: string;
-    options: Options[];
+    options: Option[];
 }
 
 export function DataTableFacetedFilter<TData, TValue>({

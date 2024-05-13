@@ -4,6 +4,7 @@ import { Form, FormField } from '@/components/ui/form';
 import { FormInput } from '@/components/form-input';
 import { FormDatePicker } from '@/components/form-date-picker';
 import { FormSelect } from '@/components/form-select';
+import { PRIORITIES } from '@/constants';
 
 interface TaskFormProps<T extends FieldValues> {
     form: UseFormReturn<T>;
@@ -33,7 +34,12 @@ export const TaskForm = <T extends FieldValues>({ form, onSubmit }: TaskFormProp
                     control={form.control}
                     name={'priority' as Path<T>}
                     render={({ field }) => (
-                        <FormSelect label="Priority" placeholder="Select a priority" field={field} />
+                        <FormSelect
+                            label="Priority"
+                            placeholder="Select a priority"
+                            field={field}
+                            options={PRIORITIES}
+                        />
                     )}
                 />
                 <Button type="submit">Submit</Button>

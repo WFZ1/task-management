@@ -4,7 +4,7 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import { Table } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { DATE_FORMAT, PRIORITIES } from '../constants';
+import { DATE_FORMAT, PRIORITIES } from '@/constants';
 import { DataTableFacetedFilter } from './data-table-faceted-filter';
 import { DatePicker } from '@/components/date-picker';
 import { format } from 'date-fns';
