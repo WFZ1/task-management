@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { TaskForm } from '@/app/create-task/task-form';
+// import { format } from 'date-fns';
 
 const formSchema = z.object({
     title: z.string().min(2, {
@@ -22,6 +23,9 @@ export const Form = () => {
     });
 
     const handleSubmit = (values: z.infer<typeof formSchema>) => {
+        // TODO: format date before sending data to the server
+        // format(values.deadline, 'MMM dd, yyyy')
+
         console.log(values);
     };
 

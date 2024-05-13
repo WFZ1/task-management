@@ -6,13 +6,13 @@ interface Field {
     onChange: (value: string) => void;
 }
 
-interface SelectFieldProps {
+interface FormSelectProps {
     label: string;
     placeholder: string;
     field: Field;
 }
 
-export const SelectField = ({ label, placeholder, field }: SelectFieldProps) => {
+export const FormSelect = ({ label, placeholder, field }: FormSelectProps) => {
     return (
         <FormItem>
             <FormLabel>{label}</FormLabel>

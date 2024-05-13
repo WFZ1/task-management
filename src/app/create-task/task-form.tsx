@@ -1,9 +1,9 @@
 import { FieldValues, Path, UseFormReturn } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { Form, FormField } from '@/components/ui/form';
-import { InputField } from '@/components/input-field';
-import { DatePickerField } from '@/components/date-picker-field';
-import { SelectField } from '@/components/select-field';
+import { FormInput } from '@/components/form-input';
+import { FormDatePicker } from '@/components/form-date-picker';
+import { FormSelect } from '@/components/form-select';
 
 interface TaskFormProps<T extends FieldValues> {
     form: UseFormReturn<T>;
@@ -17,23 +17,23 @@ export const TaskForm = <T extends FieldValues>({ form, onSubmit }: TaskFormProp
                 <FormField
                     control={form.control}
                     name={'title' as Path<T>}
-                    render={({ field }) => <InputField label="Title" placeholder="Task 1" field={field} />}
+                    render={({ field }) => <FormInput label="Title" placeholder="Task 1" field={field} />}
                 />
                 <FormField
                     control={form.control}
                     name={'description' as Path<T>}
-                    render={({ field }) => <InputField label="Description" placeholder="Details" field={field} />}
+                    render={({ field }) => <FormInput label="Description" placeholder="Details" field={field} />}
                 />
                 <FormField
                     control={form.control}
                     name={'deadline' as Path<T>}
-                    render={({ field }) => <DatePickerField label="Deadline" placeholder="Pick a date" field={field} />}
+                    render={({ field }) => <FormDatePicker label="Deadline" placeholder="Pick a date" field={field} />}
                 />
                 <FormField
                     control={form.control}
                     name={'priority' as Path<T>}
                     render={({ field }) => (
-                        <SelectField label="Priority" placeholder="Select a priority" field={field} />
+                        <FormSelect label="Priority" placeholder="Select a priority" field={field} />
                     )}
                 />
                 <Button type="submit">Submit</Button>

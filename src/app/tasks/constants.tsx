@@ -17,3 +17,5 @@ export const PRIORITIES = [
         icon: ArrowUpIcon,
     },
 ];
+
+export const DATE_FORMAT = 'MMM dd, yyyy';

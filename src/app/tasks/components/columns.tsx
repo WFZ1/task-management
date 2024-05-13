@@ -45,7 +45,7 @@ export const columns: ColumnDef<Task>[] = [
             return <DataTableColumnWithSorting column={column} title="Deadline" />;
         },
         filterFn: (row, id, value) => {
-            return value.includes(row.getValue(id));
+            return value === row.getValue(id);
         },
     },
     {

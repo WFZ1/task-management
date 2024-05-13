@@ -1,4 +1,3 @@
-import { ControllerProps, ControllerRenderProps, FieldPath, FieldValues } from 'react-hook-form';
 import { FormControl, FormItem, FormLabel, FormMessage } from './ui/form';
 import { Input } from './ui/input';
 
@@ -7,13 +6,13 @@ interface Field {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-interface InputFieldProps {
+interface FormInputProps {
     label: string;
     placeholder: string;
     field: Field;
 }
 
-export const InputField = ({ label, placeholder, field }: InputFieldProps) => {
+export const FormInput = ({ label, placeholder, field }: FormInputProps) => {
     return (
         <FormItem>
             <FormLabel>{label}</FormLabel>

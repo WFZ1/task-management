@@ -12,7 +12,7 @@ interface Field {
     onChange: SelectSingleEventHandler;
 }
 
-interface DatePickerFieldProps {
+interface FormDatePickerProps {
     label: string;
     placeholder: string;
     field: Field;
@@ -21,7 +21,7 @@ interface DatePickerFieldProps {
 const TODAY = new Date();
 const NEXT_YEAR = new Date(new Date().setFullYear(TODAY.getFullYear() + 1));
 
-export const DatePickerField = ({ label, placeholder, field }: DatePickerFieldProps) => {
+export const FormDatePicker = ({ label, placeholder, field }: FormDatePickerProps) => {
     return (
         <FormItem className="flex flex-col">
             <FormLabel>{label}</FormLabel>
