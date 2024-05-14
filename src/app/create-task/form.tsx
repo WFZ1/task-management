@@ -20,6 +20,10 @@ const formSchema = z.object({
 export const Form = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
+        defaultValues: {
+            title: '',
+            description: '',
+        },
     });
 
     const handleSubmit = (values: z.infer<typeof formSchema>) => {
