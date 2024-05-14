@@ -9,6 +9,8 @@ export interface Task {
     isCompleted: boolean;
 }
 
+export type TaskFields = Pick<Task, 'title' | 'description' | 'priority'> & { deadline: Date };
+
 export interface Option {
     label: string;
     value: string;
