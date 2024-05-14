@@ -1,5 +1,3 @@
-'use client';
-
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { Table } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
@@ -36,7 +34,6 @@ export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>)
                         table.getColumn('deadline')?.setFilterValue(value && format(value, DATE_FORMAT));
                     }}
                 />
-
                 <DataTableFacetedFilter column={table.getColumn('priority')} title="Priority" options={PRIORITIES} />
                 {isFiltered && (
                     <Button variant="ghost" onClick={() => table.resetColumnFilters()} className="h-8 px-2 lg:px-3">

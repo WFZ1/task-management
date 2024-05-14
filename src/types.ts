@@ -6,6 +6,7 @@ export interface Task {
     description: string;
     deadline: string;
     priority: string;
+    isCompleted: boolean;
 }
 
 export interface Option {
