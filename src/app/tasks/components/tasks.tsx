@@ -1,21 +1,13 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import { TasksTable } from './tasks-table';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '@/utils/supabase/server';
 import { Task } from '@/types';
+import { cookies } from 'next/headers';
 
-export const Tasks = () => {
-    const [tasks, setTasks] = useState<Task[]>([]);
+export const Tasks = async () => {
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
 
-    useEffect(() => {
-        const supabase = createClient();
+    const { data }: { data: Task[] | null } = await supabase.from('tasks').select();
 
-        supabase
-            .from('tasks')
-            .select()
-            .then(({ data }: { data: Task[] | null }) => setTasks(data ?? []));
-    }, []);
-
-    return <TasksTable data={tasks} onUpdateData={setTasks} />;
+    return <TasksTable data={data ?? []} />;
 };

@@ -21,16 +21,17 @@ import { Checkbox } from '@/components/ui/checkbox';
 
 interface TasksTableProps {
     data: Task[];
-    onUpdateData(data: Task[]): void;
 }
 
-export function TasksTable({ data, onUpdateData }: TasksTableProps) {
+export function TasksTable({ data }: TasksTableProps) {
+    const [tasks, setTasks] = useState<Task[]>(data);
+
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [sorting, setSorting] = useState<SortingState>([]);
 
     const toggleTaskCompletion = useCallback(
         (taskId: string, isCompleted: boolean) => {
-            const updatedTasks = data.map((task) => {
+            const updatedTasks = tasks.map((task) => {
                 if (task.id !== taskId) {
                     return task;
                 }
@@ -38,9 +39,9 @@ export function TasksTable({ data, onUpdateData }: TasksTableProps) {
                 return { ...task, isCompleted: isCompleted };
             });
 
-            onUpdateData(updatedTasks);
+            setTasks(updatedTasks);
         },
-        [data, onUpdateData]
+        [tasks, setTasks]
     );
 
     const enhancedColumns: ColumnDef<Task>[] = useMemo(() => {
@@ -64,7 +65,7 @@ export function TasksTable({ data, onUpdateData }: TasksTableProps) {
     }, [toggleTaskCompletion]);
 
     const table = useReactTable({
-        data,
+        data: tasks,
         columns: enhancedColumns,
         state: {
             sorting,
