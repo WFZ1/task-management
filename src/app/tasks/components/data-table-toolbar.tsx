@@ -2,7 +2,7 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import { Table } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { DATE_FORMAT, PRIORITIES } from '@/constants';
+import { COMPLETED, DATE_FORMAT, PRIORITIES } from '@/constants';
 import { DataTableFacetedFilter } from './data-table-faceted-filter';
 import { DatePicker } from '@/components/date-picker';
 import { format } from 'date-fns';
@@ -35,6 +35,7 @@ export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>)
                     }}
                 />
                 <DataTableFacetedFilter column={table.getColumn('priority')} title="Priority" options={PRIORITIES} />
+                <DataTableFacetedFilter column={table.getColumn('isCompleted')} title="Completed" options={COMPLETED} />
                 {isFiltered && (
                     <Button variant="ghost" onClick={() => table.resetColumnFilters()} className="h-8 px-2 lg:px-3">
                         Reset

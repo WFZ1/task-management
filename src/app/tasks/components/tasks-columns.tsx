@@ -12,7 +12,7 @@ export const columns: ColumnDef<Task>[] = [
         accessorKey: 'isCompleted',
         header: 'Completed',
         filterFn: (row, id, value) => {
-            return value === row.getValue(id);
+            return value.includes(String(row.getValue(id)));
         },
     },
     {

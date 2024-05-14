@@ -18,4 +18,15 @@ export const PRIORITIES = [
     },
 ];
 
+export const COMPLETED = [
+    {
+        label: 'Done',
+        value: 'true',
+    },
+    {
+        label: 'Todo',
+        value: 'false',
+    },
+];
+
 export const DATE_FORMAT = 'MMM dd, yyyy';
