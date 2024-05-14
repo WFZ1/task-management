@@ -20,6 +20,7 @@ import { Task } from '@/types';
 import { Checkbox } from '@/components/ui/checkbox';
 import { DataTableRowActions } from './data-table-row-actions';
 import deleteTask from '@/actions/delete-task';
+import completeTask from '@/actions/complete-task';
 
 interface TasksTableProps {
     data: Task[];
@@ -32,20 +33,23 @@ export function TasksTable({ data }: TasksTableProps) {
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [sorting, setSorting] = useState<SortingState>([]);
 
-    const toggleTaskCompletion = useCallback(
-        (taskId: Task['id'], isCompleted: Task['isCompleted']) => {
-            const updatedTasks = tasks.map((task) => {
-                if (task.id !== taskId) {
-                    return task;
-                }
+    const toggleTaskCompletion = useCallback((taskId: Task['id'], isCompleted: Task['isCompleted']) => {
+        // TODO: check if it possible to do commented below
 
-                return { ...task, isCompleted: isCompleted };
-            });
+        // const updatedTasks = tasks.map((task) => {
+        //     if (task.id !== taskId) {
+        //         return task;
+        //     }
 
-            setTasks(updatedTasks);
-        },
-        [tasks, setTasks]
-    );
+        //     return { ...task, isCompleted: isCompleted };
+        // });
+
+        // setTasks(updatedTasks);
+
+        startTransition(async () => {
+            await completeTask(taskId, isCompleted);
+        });
+    }, []);
 
     const handleTaskDeletion = useCallback((taskId: Task['id']) => {
         startTransition(async () => {
