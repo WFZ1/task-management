@@ -9,7 +9,11 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-export const DataTableRowActions = () => {
+interface DataTableRowActionsProps {
+    onDelete(): void;
+}
+
+export const DataTableRowActions = ({ onDelete }: DataTableRowActionsProps) => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -21,7 +25,7 @@ export const DataTableRowActions = () => {
             <DropdownMenuContent align="end" className="w-[160px]">
                 <DropdownMenuItem>Edit</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={onDelete}>
                     Delete
                     <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
                 </DropdownMenuItem>

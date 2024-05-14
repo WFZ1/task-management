@@ -1,7 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { PRIORITIES } from '@/constants';
 import { DataTableColumnWithSorting } from './data-table-column-with-sorting';
-import { DataTableRowActions } from './data-table-row-actions';
 import { DataTableCellWithIcon } from './data-table-cell-with-icon';
 import { FunctionComponent } from 'react';
 import { Task } from '@/types';
@@ -50,6 +49,5 @@ export const columns: ColumnDef<Task>[] = [
     },
     {
         id: 'actions',
-        cell: () => <DataTableRowActions />,
     },
 ];
