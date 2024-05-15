@@ -1,10 +1,8 @@
 import { TasksTable } from './tasks-table';
-import { createClient } from '@/utils/supabase/server';
-import { Task } from '@/types';
+import getTasks from '@/actions/get-tasks';
 
 export const Tasks = async () => {
-    const supabase = createClient();
-    const { data }: { data: Task[] | null } = await supabase.from('tasks').select();
+    const data = await getTasks();
 
     return <TasksTable data={data ?? []} />;
 };
