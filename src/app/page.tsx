@@ -1,4 +1,10 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+    title: 'Task Management',
+    description: 'Task Management',
+};
 
 export default function Home() {
     return (
