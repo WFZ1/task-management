@@ -3,6 +3,7 @@
 import { Task } from '@/types';
 import { createClient } from '@/utils/supabase/server';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 const supabase = createClient();
 
@@ -15,4 +16,5 @@ export default async function createTask(task: Omit<Task, 'id' | 'isCompleted'>)
     }
 
     revalidatePath('/tasks');
+    redirect('/tasks');
 }
