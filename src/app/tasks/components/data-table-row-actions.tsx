@@ -11,9 +11,10 @@ import {
 
 interface DataTableRowActionsProps {
     onDelete(): void;
+    onEdit(): void;
 }
 
-export const DataTableRowActions = ({ onDelete }: DataTableRowActionsProps) => {
+export const DataTableRowActions = ({ onDelete, onEdit }: DataTableRowActionsProps) => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -23,7 +24,7 @@ export const DataTableRowActions = ({ onDelete }: DataTableRowActionsProps) => {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-[160px]">
-                <DropdownMenuItem>Edit</DropdownMenuItem>
+                <DropdownMenuItem onClick={onEdit}>Edit</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={onDelete}>
                     Delete

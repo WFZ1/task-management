@@ -21,6 +21,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { DataTableRowActions } from './data-table-row-actions';
 import deleteTask from '@/actions/delete-task';
 import completeTask from '@/actions/complete-task';
+import { useRouter } from 'next/navigation';
 
 interface TasksTableProps {
     data: Task[];
@@ -29,6 +30,7 @@ interface TasksTableProps {
 export function TasksTable({ data }: TasksTableProps) {
     const [tasks, setTasks] = useState<Task[]>(data);
     const [isPending, startTransition] = useTransition();
+    const router = useRouter();
 
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [sorting, setSorting] = useState<SortingState>([]);
@@ -75,14 +77,17 @@ export function TasksTable({ data }: TasksTableProps) {
                 return {
                     ...column,
                     cell: ({ row }: { row: Row<Task> }) => (
-                        <DataTableRowActions onDelete={() => handleTaskDeletion(row.original.id)} />
+                        <DataTableRowActions
+                            onDelete={() => handleTaskDeletion(row.original.id)}
+                            onEdit={() => router.push(`/edit-task?id=${row.original.id}`)}
+                        />
                     ),
                 };
             }
 
             return column;
         });
-    }, [toggleTaskCompletion, handleTaskDeletion]);
+    }, [toggleTaskCompletion, handleTaskDeletion, router]);
 
     const table = useReactTable({
         data: tasks,
