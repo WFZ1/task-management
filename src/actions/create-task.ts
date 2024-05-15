@@ -5,9 +5,8 @@ import { createClient } from '@/utils/supabase/server';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
-const supabase = createClient();
-
 export default async function createTask(task: Omit<Task, 'id' | 'isCompleted'>) {
+    const supabase = createClient();
     const { error } = await supabase.from('tasks').insert(task);
 
     if (error) {
