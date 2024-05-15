@@ -10,7 +10,7 @@ export default async function getTasks(): Promise<Task[] | null | undefined> {
 
     if (error) {
         console.error('Error getting tasks: ', error);
-        return;
+        throw error;
     }
 
     return data;

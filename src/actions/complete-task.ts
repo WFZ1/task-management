@@ -10,7 +10,7 @@ export default async function completeTask(taskId: Task['id'], isCompleted: Task
 
     if (error) {
         console.error('Error completing task: ', error);
-        return;
+        throw error;
     }
 
     revalidatePath('/tasks');

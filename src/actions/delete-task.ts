@@ -10,7 +10,7 @@ export default async function deleteTask(taskId: Task['id']) {
 
     if (error) {
         console.error('Error deleting task: ', error);
-        return;
+        throw error;
     }
 
     revalidatePath('/tasks');

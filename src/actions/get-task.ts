@@ -10,7 +10,7 @@ export default async function getTask(taskId: Task['id']): Promise<Task | null |
 
     if (error) {
         console.error('Error getting task: ', error);
-        return;
+        throw error;
     }
 
     return data?.[0];

@@ -11,7 +11,7 @@ export default async function updateTask(taskId: Task['id'], taskData: Omit<Task
 
     if (error) {
         console.error('Error updating task: ', error);
-        return;
+        throw error;
     }
 
     revalidatePath('/tasks');

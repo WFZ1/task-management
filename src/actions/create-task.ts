@@ -11,7 +11,7 @@ export default async function createTask(task: Omit<Task, 'id' | 'isCompleted'>)
 
     if (error) {
         console.error('Error inserting task to db: ', error);
-        return;
+        throw error;
     }
 
     revalidatePath('/tasks');

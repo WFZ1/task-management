@@ -29,35 +29,36 @@ interface TasksTableProps {
 
 export function TasksTable({ data }: TasksTableProps) {
     const [tasks, setTasks] = useState<Task[]>(data);
-    const [isPending, startTransition] = useTransition();
     const router = useRouter();
 
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [sorting, setSorting] = useState<SortingState>([]);
 
-    const toggleTaskCompletion = useCallback((taskId: Task['id'], isCompleted: Task['isCompleted']) => {
-        // TODO: check if it possible to do commented below
+    const toggleTaskCompletion = useCallback(
+        async (taskId: Task['id'], isCompleted: Task['isCompleted']) => {
+            const updatedTasks = tasks.map((task) => {
+                if (task.id !== taskId) {
+                    return task;
+                }
 
-        // const updatedTasks = tasks.map((task) => {
-        //     if (task.id !== taskId) {
-        //         return task;
-        //     }
+                return { ...task, isCompleted: isCompleted };
+            });
 
-        //     return { ...task, isCompleted: isCompleted };
-        // });
-
-        // setTasks(updatedTasks);
-
-        startTransition(async () => {
             await completeTask(taskId, isCompleted);
-        });
-    }, []);
+            setTasks(updatedTasks);
+        },
+        [tasks]
+    );
 
-    const handleTaskDeletion = useCallback((taskId: Task['id']) => {
-        startTransition(async () => {
+    const handleTaskDeletion = useCallback(
+        async (taskId: Task['id']) => {
+            const updatedTasks = tasks.filter((task) => task.id !== taskId);
+
             await deleteTask(taskId);
-        });
-    }, []);
+            setTasks(updatedTasks);
+        },
+        [tasks]
+    );
 
     const enhancedColumns: ColumnDef<Task>[] = useMemo(() => {
         return columns.map((column: ColumnDef<Task>) => {
