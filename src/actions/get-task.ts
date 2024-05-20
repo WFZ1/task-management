@@ -6,12 +6,16 @@ import { SupabaseQueryResponse } from '@/utils/supabase/types';
 
 export default async function getTask(taskId: Task['id']): Promise<Task | null | undefined> {
     const supabase = createClient();
-    const { data, error }: SupabaseQueryResponse<Task[]> = await supabase.from('tasks').select().eq('id', taskId);
+    const { data, error }: SupabaseQueryResponse<Task> = await supabase
+        .from('tasks')
+        .select()
+        .eq('id', taskId)
+        .single();
 
     if (error) {
         console.error('Error getting task: ', error);
         throw error;
     }
 
-    return data?.[0];
+    return data;
 }
