@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { Task } from './components/task';
+import { Task } from '@/components/edit-task/task';
 
 export const metadata: Metadata = {
     title: 'Edit Task',

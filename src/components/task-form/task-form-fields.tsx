@@ -1,8 +1,8 @@
 import { Control } from 'react-hook-form';
 import { FormField } from '@/components/ui/form';
-import { FormInput } from '@/components/form-input';
-import { FormDatePicker } from '@/components/form-date-picker';
-import { FormSelect } from '@/components/form-select';
+import { FormInput } from '@/components/ui/form-input';
+import { FormDatePicker } from '@/components/ui/form-date-picker';
+import { FormSelect } from '@/components/ui/form-select';
 import { PRIORITIES } from '@/constants';
 import { TaskFields } from '@/types';
 

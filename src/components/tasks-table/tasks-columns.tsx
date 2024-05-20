@@ -1,7 +1,7 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { PRIORITIES } from '@/constants';
-import { DataTableColumnWithSorting } from './data-table-column-with-sorting';
-import { DataTableCellWithIcon } from './data-table-cell-with-icon';
+import { DataTableColumnWithSorting } from '../ui/data-table/data-table-column-with-sorting';
+import { DataTableCellWithIcon } from '../ui/data-table/data-table-cell-with-icon';
 import { FunctionComponent } from 'react';
 import { Task } from '@/types';
 

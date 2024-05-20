@@ -1,4 +1,4 @@
-import { TasksTable } from './tasks-table';
+import { TasksTable } from '@/components/tasks-table/tasks-table';
 import getTasks from '@/actions/get-tasks';
 
 export const Tasks = async () => {
