@@ -1,5 +1,5 @@
-import { FormControl, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { FormControl, FormItem, FormLabel, FormMessage } from './form';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select';
 import { Option } from '@/types';
 
 interface Field {
@@ -7,6 +7,7 @@ interface Field {
     onChange: (value: string) => void;
 }
 
+// TODO: rewrite 'options: Option[];' as 'options: T;'
 interface FormSelectProps {
     label: string;
     placeholder: string;

@@ -4,13 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { COMPLETED, DATE_FORMAT, PRIORITIES } from '@/constants';
 import { DataTableFacetedFilter } from './data-table-faceted-filter';
-import { DatePicker } from '@/components/date-picker';
+import { DatePicker } from '@/components/ui/date-picker';
 import { format } from 'date-fns';
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>;
 }
 
+// TODO: add config as prop for setting the needed fields. Currently data-table tied on columns names from table prop (it is bad)
 export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>) {
     const isFiltered = table.getState().columnFilters.length > 0;
 

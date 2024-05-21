@@ -1,5 +1,5 @@
-import { FormControl, FormItem, FormLabel, FormMessage } from './ui/form';
-import { Input } from './ui/input';
+import { FormControl, FormItem, FormLabel, FormMessage } from './form';
+import { Input } from './input';
 
 interface Field {
     value: string;

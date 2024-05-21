@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, useState, useTransition } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import {
     ColumnDef,
     ColumnFiltersState,
@@ -15,10 +15,10 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 import { columns } from './tasks-columns';
-import { DataTable } from './data-table';
+import { DataTable } from '@/components/ui/data-table/data-table';
 import { Task } from '@/types';
 import { Checkbox } from '@/components/ui/checkbox';
-import { DataTableRowActions } from './data-table-row-actions';
+import { DataTableRowActions } from '@/components/ui/data-table/data-table-row-actions';
 import deleteTask from '@/actions/delete-task';
 import completeTask from '@/actions/complete-task';
 import { useRouter } from 'next/navigation';
