@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { updateSession } from '@/utils/supabase/middleware';
 import { checkUserAuth } from './utils/checkUserAuth';
 
-const PUBLIC_ROUTES = ['/login', '/error'];
+const PUBLIC_ROUTES = ['/log-in', '/sign-up', '/error'];
 const MAIL_CONFIRMING_ROUTE = '/auth/confirm';
 
 export const middleware = async (request: NextRequest) => {
@@ -17,7 +17,7 @@ export const middleware = async (request: NextRequest) => {
     }
 
     if (isUserHasNotAccess) {
-        return NextResponse.redirect(new URL('/login', request.url));
+        return NextResponse.redirect(new URL('/log-in', request.url));
     }
 
     if (isUserLoggedIn) {
