@@ -2,28 +2,25 @@
 
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
-
-interface SignUpData {
-    email: string;
-    password: string;
-}
+import { SignUpWithPasswordCredentials } from '@supabase/auth-js';
 
 const signUp = async (formData: FormData) => {
     const data = normalizeData(formData);
 
     const supabase = createClient();
-    const { error } = await supabase.auth.signUp(data);
+    const { error } = await supabase.auth.signUp(data as unknown as SignUpWithPasswordCredentials);
 
     if (error) {
         throw error;
     }
 };
 
-const normalizeData = (formData: FormData): SignUpData => {
-    const data = {
-        email: formData.get('email') as string,
-        password: formData.get('password') as string,
-    };
+const normalizeData = (formData: FormData): Record<string, string> => {
+    const data: Record<string, string> = {};
+
+    for (const [key, value] of formData) {
+        data[key] = value as string;
+    }
 
     return data;
 };
