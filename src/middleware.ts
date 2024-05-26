@@ -2,14 +2,14 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { updateSession } from '@/utils/supabase/middleware';
 import { checkUserAuth } from './utils/checkUserAuth';
 
-const PUBLIC_ROUTES = ['/log-in', '/sign-up', '/error'];
+const PUBLIC_ROUTES = new Set(['/log-in', '/sign-up', '/error']);
 const MAIL_CONFIRMING_ROUTE = '/auth/confirm';
 
 export const middleware = async (request: NextRequest) => {
     const isAuth = await checkUserAuth();
 
-    const isUserHasNotAccess = !PUBLIC_ROUTES.includes(request?.nextUrl?.pathname) && !isAuth;
-    const isUserLoggedIn = PUBLIC_ROUTES.includes(request?.nextUrl?.pathname) && isAuth;
+    const isUserHasNotAccess = !PUBLIC_ROUTES.has(request?.nextUrl?.pathname) && !isAuth;
+    const isUserLoggedIn = PUBLIC_ROUTES.has(request?.nextUrl?.pathname) && isAuth;
     const isMailConfirmingRoute = request?.nextUrl?.pathname === MAIL_CONFIRMING_ROUTE;
 
     if (isMailConfirmingRoute) {
