@@ -1,4 +1,4 @@
-Task management app made with **Next.js** and **Supabase**
+Task management app made with **Next.js** and **Supabase**.
 
 -   Tasks have a name, description, deadline, priority and status (completed/not completed).
 -   The user can create, view, edit, mark as completed and delete tasks by using server actions.
