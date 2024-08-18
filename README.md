@@ -6,7 +6,7 @@ Task management app made with **Next.js** and **Supabase**.
 -   Sorting tasks based on priority or status.
 -   shadcn/ui is used as component library.
 -   tailwind is used as CSS framework.
--   Supabase database stores and handles task data.
+-   Supabase database stores and handles tasks data.
 -   User sign up and log in functionality is implemented using Supabase Auth.
 -   The application is deployed on Vercel.
 -   Full CI/CD using Github Actions.
